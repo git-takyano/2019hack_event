@@ -31,6 +31,7 @@ async function requestGeoCoderAPI(query) {
     },
   });
   const { data } = response;
+  document.getElementById('api-raw-result').textContent = JSON.stringify(data, undefined, 2);
   return data.ResultInfo.Count > 0 ? data.Feature : [];
 }
 
