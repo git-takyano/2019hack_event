@@ -25,11 +25,9 @@
  */
 async function requestGeoCoderAPI(query) {
   const response = await axios({
-    url: 'https://p8yfk8g0ah.execute-api.ap-northeast-1.amazonaws.com/test/geoCoder',
+    url: 'https://p8yfk8g0ah.execute-api.ap-northeast-1.amazonaws.com/test/geocode/V1/geoCoder',
     params: {
-      appid: 'dj00aiZpPUtybWsxMWsySG83SCZzPWNvbnN1bWVyc2VjcmV0Jng9ZTY-',
-      query,
-      output: 'json',
+      query
     },
   });
   const { data } = response;
