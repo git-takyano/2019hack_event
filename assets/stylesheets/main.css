@@ -1,0 +1,13 @@
+#map {
+    width: 500px;
+    height: 400px;
+}
+
+.container {
+    margin: 100px;
+
+    display: flex;
+    flex-direction: row wrap;
+    justify-content: space-around;
+    align-items: center;
+}
