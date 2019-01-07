@@ -27,10 +27,12 @@ async function requestGeoCoderAPI(query) {
   const response = await axios({
     url: 'https://p8yfk8g0ah.execute-api.ap-northeast-1.amazonaws.com/test/geocode/V1/geoCoder',
     params: {
-      query
+      query,
+      output: 'json'
     },
   });
   const { data } = response;
+  // APIから受け取った内容を書き出す
   document.getElementById('api-raw-result').textContent = JSON.stringify(data, undefined, 2);
   return data.ResultInfo.Count > 0 ? data.Feature : [];
 }
@@ -58,11 +60,17 @@ function parseCoordinates(str) {
 
 /**
  * プログラムのエントリーポイント
+ * この関数が最初に実行される
  */
 async function main() {
+  // 地図を初期化
   const map = new Y.Map('map');
   drawMap(map, { lat: 35.68227528, lng: 139.73310240 });
+  // コントロールの追加
+  const sliderZoomControl = new Y.SliderZoomControlVertical();
+  map.addControl(sliderZoomControl);
 
+  // 「検索する」ボタンを押したときのアクションを設定する
   document.getElementById('form').onsubmit = () => {
     /** @type {string} テキストボックスの入力内容 */
     const query = document.getElementById('query').value;
@@ -74,7 +82,10 @@ async function main() {
         const [first] = geoFeatures;
         const lct = parseCoordinates(first.Geometry.Coordinates);
         resultText.textContent = `場所: ${first.Name}, 緯度: ${lct.lat}, 経度: ${lct.lng}`;
+        // 地図を移動してラベル追加
         drawMap(map, lct);
+        const label = new Y.Label(new Y.LatLng(lct.lat, lct.lng), first.Name);
+        map.addFeature(label);
       } else {
         resultText.textContent = '正しい住所を入力してください';
       }
