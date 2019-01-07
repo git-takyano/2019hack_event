@@ -1,7 +1,0 @@
-いったんテスト用アカウント(cwang_0803)でClient ID(V2)を申請しました。
-本番ワークショップのときどうするかはまた別で考えます。
-
-Client ID：
-dj00aiZpPUtybWsxMWsySG83SCZzPWNvbnN1bWVyc2VjcmV0Jng9ZTY-
-シークレット：
-RVOyfG50DD55MdWAXxMDZwYjgbmWIrx4fVtXvGaL
