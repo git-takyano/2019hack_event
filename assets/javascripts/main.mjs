@@ -25,7 +25,7 @@
  */
 async function requestGeoCoderAPI(query) {
   const response = await axios({
-    url: 'https://p8yfk8g0ah.execute-api.ap-northeast-1.amazonaws.com/test/geocode/V1/geoCoder',
+    url: 'https://atlasyano-eval-prod.apigee.net/yj_map/geocode/V1/geoCoder',
     params: {
       query,
       output: 'json'
