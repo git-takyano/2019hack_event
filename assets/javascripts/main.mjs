@@ -32,8 +32,8 @@ async function requestGeoCoderAPI(query) {
     },
   });
   const { data } = response;
-  // APIから受け取った内容を書き出す
-  document.getElementById('api-raw-result').textContent = JSON.stringify(data, undefined, 2);
+  // APIから受け取った内容をコンソールに表示
+  console.log(JSON.stringify(data, undefined, 2));
   return data.ResultInfo.Count > 0 ? data.Feature : [];
 }
 
